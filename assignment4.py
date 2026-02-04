@@ -1,30 +1,30 @@
-#task1
+# Task 1
+filename_read = "sample.txt"
 
-def read_sample_file(filename):
-    try:
-        with open(filename, 'r') as file:
-            for line in file
-                print(line.strip())
-                
-    except FileNotFoundError:
-        print(f"Error: The file '{filename}' was not found.")
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+try:
+    with open(filename_read, "r") as file:
+        print("Reading file content:")
+        for index, line in enumerate(file, start=1):
+            print(f"Line {index}: {line.strip()}")
+except FileNotFoundError:
+    print(f"Error: The file '{filename_read}' was not found.")
 
-read_sample_file("sample.txt")
+print("\n" + "-"*10 + "\n")
 
 
-#task2
+# Task 2
+filename_write = "output.txt"
 
+first_input = input("Enter text to write to the file: ")
+with open(filename_write, "w") as file:
+    file.write(first_input + "\n")
+print(f"Data successfully written to {filename_write}.\n")
 
-user_data = input("Enter data to write: ")
-with open("output.txt", "w") as file:
-    file.write(user_data + "\n")
+second_input = input("Enter additional text to append: ")
+with open(filename_write, "a") as file:
+    file.write(second_input + "\n")
+print("Data successfully appended.\n")
 
-additional_data = input("Enter data to append: ")
-with open("output.txt", "a") as file:
-    file.write(additional_data + "\n")
-
-print("\nFinal Content of output.txt:")
-with open("output.txt", "r") as file:
+print(f"Final content of {filename_write}:")
+with open(filename_write, "r") as file:
     print(file.read())
